@@ -3,7 +3,8 @@ Operating System:
 Raspberry Pi OS Lite (64-bit)
 
 Runtime Environment:
--Python 3.14
+
+-Python 3.14 (https://www.python.org/downloads/)
 
 Containers:
 -Docker
