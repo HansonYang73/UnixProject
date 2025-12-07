@@ -1,11 +1,11 @@
 Operating System:
--Linux Debian
+
+Raspberry Pi OS Lite (64-bit)
 
 Runtime Environment:
 -Python 3.14
 
 Containers:
--Proxmox
 -Docker
 
 Permissions:
