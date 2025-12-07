@@ -2,6 +2,9 @@ Operating System:
 
 Raspberry Pi OS Lite (64-bit)
 
+Disk Imaging Tool:
+Rasberry Pi Imager (https://www.raspberrypi.com/software/)
+
 Runtime Environment:
 
 -Python 3.14 (https://www.python.org/downloads/)
