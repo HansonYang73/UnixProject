@@ -15,12 +15,13 @@ Runtime Environment:
 
 Containers:
 
--Docker
+-Docker(Better for isolation)
 
 
 Permissions:
 
--Give full permissions to owners and nothing to group and others
+-The user that can access the server has full permissions but does not have root 
+-This makes it so that we cant make any big mistakes or issues.
 
 
 Additional:
