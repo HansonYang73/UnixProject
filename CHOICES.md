@@ -1,3 +1,11 @@
+OS:
+
+We initially considered using Ubuntu Server OS because we heard from ChatGPT and online searches that it is great for hosting a website, as it also doesn’t have a desktop interface, which saves resources. But then we found out by using the Raspberry Pi Imager that there were OS that were built for the Raspberry Pi, so we decided to switch to the Raspberry Pi OS Lite, which also doesn’t have a desktop environment.
+
+Remote Connection:
+
+To connect remotely to the homelab. We chose Tailscale because of its ease of use and security.
+
 Programming Language: 
 
 -Python
