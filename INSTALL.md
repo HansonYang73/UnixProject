@@ -33,5 +33,7 @@ Additional:
 
 -Tailscale: https://tailscale.com/kb/1031/install-linux
 
+-resolvconf: apt install resolvconf
+
 
 
