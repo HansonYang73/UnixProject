@@ -20,7 +20,7 @@ jobs:
       - name: Starting up tailscale and connecting it to my Tailscale network
         run: sudo tailscale up --auth-key ${{ secrets.TSKEY_AUTH }}
 
-      - name: Connecting to the homelab by ssh authentication
+      - name: Connecting to the homelab by ssh authentication and Pulling from github
         run: |
           mkdir -p ~/.ssh/
           printf "%s\n" "${{ secrets.PKEY_FOR_RASPBERRYPI }}" > ~/.ssh/id_rsa
