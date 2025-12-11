@@ -10,8 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Downloading tailscale
-        run: sudo apt install -y tailscale
+      - name: Downloading tailscale, ssh
+        run: sudo apt install -y tailscale openssh-server
 
       - name: Starting up tailscale and connecting it to my Tailscale network
-        run: sudo tailscale up --auth-key ${{ secrets.TSKEY_AUTH  }} 
+        run: sudo tailscale up --auth-key ${{ secrets.TSKEY_AUTH }}
+
+      - name: Connecting to the homelab by ssh authentication
+        run: |
+          mkdir -p ~/.ssh/
+          echo ${{ secrets.PKEY_FOR_RASPBERRYPI }} > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh -p 6769 -i ~/.ssh/id_rsa hysc@100.95.1.73
+          touch ~/testing-github-action 
