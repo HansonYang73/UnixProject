@@ -21,5 +21,4 @@ jobs:
           mkdir -p ~/.ssh/
           echo ${{ secrets.PKEY_FOR_RASPBERRYPI }} > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh -p 6769 -i ~/.ssh/id_rsa hysc@100.95.1.73
-          touch ~/testing-github-action 
+          ssh -p 6769 -i ~/.ssh/id_rsa hysc@100.95.1.73 "touch ~/testing-github-action"
