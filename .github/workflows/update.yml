@@ -26,4 +26,13 @@ jobs:
           printf "%s\n" "${{ secrets.PKEY_FOR_RASPBERRYPI }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "cd ~/UnixProject && git pull"
-          ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "sudo docker cp /home/hysc/UnixProject/website.html 68ab2b4b6267:/usr/local/apache2/htdocs/index.html"
+      
+      - name: Check html
+        run: ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "cd ~/UnixProject && htmlhint "website.html""
+
+      - name: Copy html into index.html
+        run: ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "sudo docker cp /home/hysc/UnixProject/website.html 68ab2b4b6267:/usr/local/apache2/htdocs/index.html"
+
+        
+
+          
