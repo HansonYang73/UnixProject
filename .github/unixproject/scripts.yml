@@ -1,0 +1,17 @@
+- name: Update Website in Homelab
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Downloading tailscale
+        run: sudo apt install -y tailscale
+
+      - name: Starting up tailscale and connecting it to my Tailscale network
+        run: sudo tailscale up --auth-key ${{ secrets.TSKEY_AUTH  }} 
