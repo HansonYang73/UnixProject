@@ -2,7 +2,7 @@ FROM httpd:2.4
 
 COPY *.html /usr/local/apache2/htdocs/index.html 
 
-COPY images /usr/local/apache2/htdocs/
+COPY images /usr/local/apache2/htdocs/images/
 
 EXPOSE 67
 
