@@ -25,7 +25,7 @@ jobs:
           mkdir -p ~/.ssh/
           printf "%s\n" "${{ secrets.PKEY_FOR_RASPBERRYPI }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "cd ~/UnixProject && git pull"
+          ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "cd ~/UnixProject && git pull origin main"
       
       - name: Check html(CI)
         run: ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "cd ~/UnixProject && htmlhint "website.html""
