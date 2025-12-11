@@ -27,11 +27,25 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "cd ~/UnixProject && git pull"
       
-      - name: Check html
+      - name: Check html(CI)
         run: ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "cd ~/UnixProject && htmlhint "website.html""
 
-      - name: Copy html into index.html
-        run: ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "sudo docker cp /home/hysc/UnixProject/website.html 68ab2b4b6267:/usr/local/apache2/htdocs/index.html"
+      - name: Deploy Website(CD)
+        run: |
+          ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "
+          sudo docker stop shwebsite || true &&
+          sudo docker rm shwebsite || true &&
+          cd ~/UnixProject &&
+          sudo docker build -t unixprojectimagefinal:latest . &&
+          sudo docker run -d -p 8080:67 --name shwebsite unixprojectimagefinal:latest"
+          
+          
+
+      
+      
+      
+      #- name: Copy html into index.html
+       # run: ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "sudo docker cp /home/hysc/UnixProject/website.html 68ab2b4b6267:/usr/local/apache2/htdocs/index.html"
 
         
 
