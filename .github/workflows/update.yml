@@ -14,7 +14,8 @@ jobs:
       - name: Downloading tailscale, ssh
         run: |
           sudo apt update
-          sudo apt install -y tailscale openssh-server
+          curl -fsSL https://tailscale.com/install.sh | sh
+          sudo apt install -y openssh-server
 
       - name: Starting up tailscale and connecting it to my Tailscale network
         run: sudo tailscale up --auth-key ${{ secrets.TSKEY_AUTH }}
