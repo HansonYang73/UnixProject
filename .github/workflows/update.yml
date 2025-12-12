@@ -1,4 +1,4 @@
-name: Update Website in Homelab
+whename: Update Website in Homelab
 
 on:
   push:
@@ -9,6 +9,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    env:
+      TS_USER: hysc
+      TS_IP: 100.95.1.73
 
     steps:
       - name: Downloading tailscale, ssh
@@ -25,14 +29,14 @@ jobs:
           mkdir -p ~/.ssh/
           printf "%s\n" "${{ secrets.PKEY_FOR_RASPBERRYPI }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "cd ~/UnixProject && git pull origin main"
+          ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no $TS_USER@$TS_IP "cd ~/UnixProject && git pull origin main"
       
       - name: Check html(CI)
-        run: ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "cd ~/UnixProject && htmlhint "website.html""
+        run: ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no $TS_USER@$TS_IP "cd ~/UnixProject && htmlhint "website.html""
 
       - name: Deploy Website(CD)
         run: |
-          ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no hysc@100.95.1.73 "
+          ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no $TS_USER@$TS_IP "
           sudo docker stop shwebsite || true &&
           sudo docker rm shwebsite || true &&
           cd ~/UnixProject &&
