@@ -49,6 +49,7 @@ On your linux computer:
 
 # Unfinished
 - Docker(Better for isolation)
+- Downloading node js 
 - Porkbun
 - website
 - Github Action
