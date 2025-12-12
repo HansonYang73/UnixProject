@@ -32,32 +32,26 @@
 4. Dont permit root login
 5. Disable password authentication
 
-# Setting up Tailscale for remote connection to the homelab
+# Setting up remote connection to the homelab by using Tailscale (Mesh VPN)
 1. Download systemd-resolved (sudo apt update && sudo apt install -y systemd-resolved)
+2. Download tailscale (curl -fsSL https://tailscale.com/install.sh | sh)
+3. Start up tailscale (sudo tailscale up)
+4. Click on the link that gets outputed and login to your Tailscale account (or create one)
+5. You can now see your tailscale ip address that can be used to connect remotely (tailscale ip)
+
+# Connecting to the homelab remotely
+On your linux computer:
+1. Download ssh, systemd-resolved and tailscale
+2. Start up tailscale and login to the same account to be connected in your Tailscale network
+   or go in the [Tailscale admin dashboard](https://login.tailscale.com/admin/machines) and "Share..." your homelab to another account
+3. Connect to the homelab: "ssh -p 7363 user@tailscaleIP"
 
 
-Containers:
-
--Docker(Better for isolation)
-
-
-Permissions:
-
--The user that can access the server has full permissions but does not have root 
--This makes it so that we cant make any big mistakes or issues.
-
-
-Additional:
-
--Vim
-
--Visual Studio Code
-
--SSH
-
--Tailscale: https://tailscale.com/kb/1031/install-linux
-
--resolvconf: apt install resolvconf
+# Unfinished
+- Docker(Better for isolation)
+- Porkbun
+- website
+- Github Action
 
 
 
