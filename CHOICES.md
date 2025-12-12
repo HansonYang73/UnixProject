@@ -6,7 +6,9 @@ We initially considered using Ubuntu Server OS because we heard from ChatGPT and
 
 To connect remotely to the homelab. We chose Tailscale because of its ease of use and security.
 
-# Programming Language: 
+# Docker vs Proxmox
+
+# Programming Language: (I think we can delete this)
 - Bash 
 
   
