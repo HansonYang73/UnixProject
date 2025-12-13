@@ -21,6 +21,9 @@ jobs:
           curl -fsSL https://tailscale.com/install.sh | sh
           sudo apt install -y openssh-server
 
+      - name: Creating ssh connecting to homelab alias
+        run: alias ssh-hl='ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no $TS_USER@$TS_IP' 
+
       - name: Starting up tailscale and connecting it to my Tailscale network
         run: sudo tailscale up --auth-key ${{ secrets.TSKEY_AUTH }}
 
@@ -29,14 +32,14 @@ jobs:
           mkdir -p ~/.ssh/
           printf "%s\n" "${{ secrets.PKEY_FOR_RASPBERRYPI }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no $TS_USER@$TS_IP "cd ~/UnixProject && git pull origin main"
+          ssh-hl "cd ~/UnixProject && git pull origin main"
       
       - name: Check html(CI)
-        run: ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no $TS_USER@$TS_IP "cd ~/UnixProject && htmlhint "website.html""
+        run: ssh-hl "cd ~/UnixProject && htmlhint "website.html""
 
       - name: Deploy Website(CD)
         run: |
-          ssh -p 6769 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no $TS_USER@$TS_IP "
+          ssh-hl "
           sudo docker stop shwebsite || true &&
           sudo docker rm shwebsite || true &&
           cd ~/UnixProject &&
