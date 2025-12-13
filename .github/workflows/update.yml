@@ -1,4 +1,4 @@
-whename: Update Website in Homelab
+name: Update Website in Homelab
 
 on:
   push:
