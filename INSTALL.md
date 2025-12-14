@@ -47,12 +47,18 @@ On your linux computer:
 3. Connect to the homelab: "ssh -p 7363 user@tailscaleIP"
 
 
-# Unfinished
-- Docker(Better for isolation)
-- Downloading node js 
-- Porkbun
-- website
-- Github Action
+# Webiste Setup
+1. Use the provided Dockerfile to build an image that you will use to create your container with.
+2. Install npm which is a package manager for nodejs : sudo apt install npm
+3. Install Nodejs for htmlhint test: sudo apt install nodejs npm
+4. Install htmlhint which will be used in our CI/CD tests : sudo npm install -g htmlhint
+5. Go to pornbun and buy a cheap domain like we did unixhomelab.xyz.
+6. After go to the domain manager and click at the bottom for details of your domain
+7. Click add record and add the public IP of the rasberry-pi
+8. HANSON (REROUTE)
+9. You can replace our html page with your own custom page. *Make sure there is only one because the Dockerfile uses a wildcard to locate the html file.
+10. Copy our yml file inside .github and change the variables to make it work.
+11. To implement CI/CD tests run htmlhint to tests your html page and then if everything is correct remake the docker to deploy it correctly with the updated html page.
 
 
 
