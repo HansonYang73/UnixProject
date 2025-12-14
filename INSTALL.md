@@ -52,7 +52,7 @@ On your linux computer:
 2. Install npm which is a package manager for nodejs : sudo apt install npm
 3. Install Nodejs for htmlhint test: sudo apt install nodejs npm
 4. Install htmlhint which will be used in our CI/CD tests : sudo npm install -g htmlhint
-5. Go to pornbun and buy a cheap domain like we did unixhomelab.xyz.
+5. Go to porkbun and buy a cheap domain like we did unixhomelab.xyz.
 6. After go to the domain manager and click at the bottom for details of your domain
 7. Click add record and add the public IP of the rasberry-pi
 8. HANSON (REROUTE)
