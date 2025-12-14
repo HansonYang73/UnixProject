@@ -49,21 +49,29 @@ On your linux computer:
 
 # Website Setup
 1. Go to porkbun and buy a cheap domain like we did unixhomelab.xyz
-2. Forward port 80 of the homelab so that it can be accessed on the internet using your Bell modem admin dashboard
+2. Forward port 80 of the homelab (internal port 8080: external port 80) so that it can be accessed on the internet using your Bell modem admin dashboard
 3. After going to the domain manager and clicking on the bottom for details of your domain
 4. Click add record and add the public IP of the Raspberry Pi
 5. You should now be able to access your website though the domain name.
 
-# Autodeployement and CI/CD setup
+# Github Setup
 1. Create a copy of our github repository
-2. Change 
-3. Use the provided Dockerfile to build an image that you will use to create your container with.
-4. Install npm which is a package manager for nodejs : sudo apt install npm
-5. Install Nodejs for htmlhint test: sudo apt install nodejs npm
-6. Install htmlhint which will be used in our CI/CD tests : sudo npm install -g htmlhint
-11. You can replace our html page with your own custom page. *Make sure there is only one because the Dockerfile uses a wildcard to locate the html file.
-12. Copy our yml file inside .github and change the variables to make it work.
-13. To implement CI/CD tests run htmlhint to tests your html page and then if everything is correct remake the docker to deploy it correctly with the updated html page.
+2. Change/Add a secret variable, PKEY_FOR_RASPBERRYPI, that contains a private key with no passkey that can be used to log in to the homelab using ssh.
+3. Change/Add a secret variable, TSKEY_AUTH, that contains an auth key to connect to your tailscale network and make it ephemeral
+4. Change the env variables in the update.yml file to your homelab username, homelab tailscale ip address and your port (7363) that you use to connect to the homelab
+5. You can replace our html page with your own custom page. *Make sure there is only one html file because the Dockerfile uses a wildcard to locate the html file.
+6. Go to your homelab and git clone your repository into the home (~) directory
+
+
+# Autodeployement and CI/CD setup
+Inside the homelab
+1. Install npm which is a package manager for nodejs : sudo apt install npm
+2. Install Nodejs for htmlhint test: sudo apt install nodejs
+3. Install htmlhint which will be used in our CI/CD tests : sudo npm install -g htmlhint
+
+# Testing
+1. Make a push to your github main branch and you should see the action went through
+2. If the html file had errors it would show an error
 
 
 
