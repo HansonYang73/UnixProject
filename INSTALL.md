@@ -17,7 +17,7 @@
 
 
 # Connecting to the homelab locally
-1. Connect to your Bell modem dashboard (Usually http://192.168.2.1/)
+1. Connect to your Bell modem admin dashboard (Usually http://192.168.2.1/)
 2. Find your Raspberry Pi ip address
 3. Go to a Linux OS that is connected on the same network as the Raspberry Pi
 4. Download ssh (sudo apt update && sudo apt install -y openssh-server)
@@ -47,18 +47,23 @@ On your linux computer:
 3. Connect to the homelab: "ssh -p 7363 user@tailscaleIP"
 
 
-# Webiste Setup
-1. Use the provided Dockerfile to build an image that you will use to create your container with.
-2. Install npm which is a package manager for nodejs : sudo apt install npm
-3. Install Nodejs for htmlhint test: sudo apt install nodejs npm
-4. Install htmlhint which will be used in our CI/CD tests : sudo npm install -g htmlhint
-5. Go to porkbun and buy a cheap domain like we did unixhomelab.xyz.
-6. After go to the domain manager and click at the bottom for details of your domain
-7. Click add record and add the public IP of the rasberry-pi
-8. HANSON (REROUTE)
-9. You can replace our html page with your own custom page. *Make sure there is only one because the Dockerfile uses a wildcard to locate the html file.
-10. Copy our yml file inside .github and change the variables to make it work.
-11. To implement CI/CD tests run htmlhint to tests your html page and then if everything is correct remake the docker to deploy it correctly with the updated html page.
+# Website Setup
+1. Go to porkbun and buy a cheap domain like we did unixhomelab.xyz
+2. Forward port 80 of the homelab so that it can be accessed on the internet using your Bell modem admin dashboard
+3. After going to the domain manager and clicking on the bottom for details of your domain
+4. Click add record and add the public IP of the Raspberry Pi
+5. You should now be able to access your website though the domain name.
+
+# Autodeployement and CI/CD setup
+1. Create a copy of our github repository
+2. Change 
+3. Use the provided Dockerfile to build an image that you will use to create your container with.
+4. Install npm which is a package manager for nodejs : sudo apt install npm
+5. Install Nodejs for htmlhint test: sudo apt install nodejs npm
+6. Install htmlhint which will be used in our CI/CD tests : sudo npm install -g htmlhint
+11. You can replace our html page with your own custom page. *Make sure there is only one because the Dockerfile uses a wildcard to locate the html file.
+12. Copy our yml file inside .github and change the variables to make it work.
+13. To implement CI/CD tests run htmlhint to tests your html page and then if everything is correct remake the docker to deploy it correctly with the updated html page.
 
 
 
